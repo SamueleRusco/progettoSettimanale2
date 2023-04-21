@@ -2,6 +2,8 @@ package com.spring2_progettoSettimanale.service;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -49,7 +51,7 @@ public class UtenteService {
 		return "utentre cancellato dal database";
 	}
 	
-	public Utente updateEmployee(Utente e) {
+	public Utente updateUtente(Utente e) {
 		if (!utenteRepository.existsById(e.getId())) {
 			throw new EntityNotFoundException("Employee ID doesnt exists on No Id Specified!!");
 		}
@@ -79,7 +81,8 @@ public class UtenteService {
 		return utenteRepository.findByUsername(username).get();	
 	}
 	
-	public Page<Utente> findAll(Pageable pageable){
-		return (Page<Utente>) utenteRepository.findAll(pageable);
+
+	public List<Utente> findAll() {
+		return (List<Utente>) utenteRepository.findAll();
 	}
 }
